@@ -1,0 +1,33 @@
+== Données
+- Input
+messid: Message id
+bsid: Base station id: station qui a reçu le message
+did: Device id
+nsed: colonne mystère. A voir si c'est pertinent ou pas de l'utiliser
+Rssi: dBm. Valeurs négatives (car logarithme). Plus la valeur est négative, plus l'atténuation est forte
+time_ux (ms): timestamp (temps de réception du message)
+bs_lat: position de la station ayant reçu le message
+bs_long: idem
+- Output (les valeurs y_train sont obtenues par GPS)
+Device position
+
+
+
+
+== ML:
+Régression de la latitude et longitude
+Feature matrix: faite à partir de la matrice des inputs
+Ground truth: matrice des outputs
+Algo: supervisé
+
+1er notebook: 
+Construire matrice de feature et ground truth
+
+
+Sl36: 70% ont une erreur plus petite que 5 km.
+Courbe basique, il faut faire beaucoup mieux que ça.
+Critère: l'erreur à 80%.
+
+== Cross validation
+Il faudra gérer une cross validation, pour ne pas que le modèle overfit. Il y a un risque d'overfitting car les données de train sont basées sur certains devices et les données de test sur d'autres.
+Leave one group out ?
